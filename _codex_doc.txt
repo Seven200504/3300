@@ -1,0 +1,273 @@
+以下按实际执行顺序拆成 14 个阶段、84 个执行项。
+
+第一阶段先确定研究口径。完成后，我们应该有一张需求对应表和一份明确的假设清单。
+1. 写出项目的核心研究问题。
+   把整个项目统一为三个层次：影响网络的结构、音乐特征对影响关系的支持、影响与风格的时间演化。后面的模型和图表都要能对应其中一个问题。
+2. 建立“要求—方法—结果—报告位置”对照表。
+   对题目的七项要求逐条登记：用什么数据、准备做什么分析、输出什么图表、写在报告哪一部分。某项无法得到明确结论时，也需要说明分析过程和原因。
+3. 明确研究单位和概念。
+   区分歌曲、艺术家、流派、年份四个层级；分别定义“音乐相似性”“网络影响力”“风格创新”和“流派演变”。例如，歌曲播放热度不能直接等同于影响力。
+4. 登记主要假设及其检验方式。
+   至少包括：数据中的关系代表被记录的影响；未记录的关系不代表绝对没有影响；主要流派标签是简化描述；音频特征只覆盖音乐的一部分；开始活跃年代不能精确代表影响发生时间。为每个关键假设安排后续敏感性检查。
+第二阶段处理数据。这一步的产出应是可追溯的清洗记录、统一的数据表，以及可信的样本量统计。
+5. 读取四张表，制作数据字典。
+   记录每列的含义、类型、单位和合理取值范围。特别注意实际字段名并不完全相同，例如逐曲表使用 artist_names、`artists_id`，不能照题目描述直接写合并代码。
+6. 统一艺术家 ID，检查姓名冲突。
+   ID 统一按字符串处理，避免数字格式变化。检查同一个 ID 在不同表中的姓名、流派和年代是否一致；对已发现的冲突登记处理依据，无法确定的记录保留歧义标记。
+7. 拆解多人合作歌曲。
+   把艺术家列表解析成“歌曲—艺术家”关联表。预先决定合作作品如何计入统计：艺术家画像可以包含其参与作品，但总体或流派汇总要明确采用分摊权重还是其他规则，避免一首歌被无意重复放大。
+8. 处理重复记录。
+   对完全相同的记录建立去重规则，并保存删除数量。相同歌名、相同艺术家但发行日期或特征不同的记录，可能是不同版本，不能仅凭标题删除。
+9. 检查缺失值、非法值和异常值。
+   检查比例型特征是否处于合理区间、时长是否为正、调式和调号是否合法。区分合法的零值、未知编码和真正缺失；对极端值先检查原因，再决定保留、转换或排除。
+10. 统一时间字段。
+    区分发行年份、具体发行日期和开始活跃年代。只有年份的记录保持年度精度；只有年代的记录保持年代精度。检查明显矛盾，但不擅自补出不存在的月份或影响日期。
+11. 核对汇总表与逐曲表。
+    从逐曲数据重新计算若干艺术家和年份的数量、均值，与提供的汇总表比较。若无法统一统计范围，建议主分析使用逐曲数据重算的统一口径，并把原汇总表用于补充比较；报告中解释差异。
+12. 建立不同分析所需的样本集合。
+    网络结构分析可以使用完整关系数据；音乐特征检验使用能可靠匹配特征的艺术家和关系；时间分析使用时间信息和样本量足够的记录。分别报告保留比例，不能让一次合并无声地决定整个项目的样本范围。
+13. 生成可复用的数据表。
+    至少准备：艺术家表、影响边表、歌曲表、歌曲与艺术家关联表、艺术家分时期特征表、流派分时期特征表。每张聚合表同时保留歌曲数、艺术家数或有效关系数。
+14. 完成探索性分析。
+    查看各流派、年代和艺术家的样本量，以及特征分布和相关性。找出样本稀疏区间、严重失衡的流派、作品很少的艺术家；据此决定时间窗口和最低样本量，而不是直接对所有年份套同一模型。
+第三阶段建立影响网络，对应题目第 1 项。
+15. 确定网络方向。
+    设艺术家为节点，影响者到追随者为有向边：
+    \[
+    i\rightarrow j
+    \]
+    表示 \(i\) 被记录为影响了 \(j\)。原始数据没有影响强度，基础网络先使用无权边。
+16. 计算网络基本结构。
+    统计节点数、边数、密度、入度和出度分布、连通分量，并检查有向环。根据实际结构选择分析方法，不预先假定网络一定是无环的。
+17. 定义直接影响力。
+    用出度表示一个艺术家被记录影响的追随者数量；用入度描述一个艺术家被记录的影响来源数量。解释这两者分别回答什么问题，并讨论记录覆盖率带来的偏差。
+18. 定义间接影响力。
+    计算经过两步、三步等路径能够触达的艺术家，避免循环和多条路径造成重复计数。若采用 PageRank，需要检查方向：按照当前边方向，直接运行通常会给接收影响的节点较高分；用于衡量源头影响力时，应明确反向图等处理及解释。
+19. 定义跨流派影响指标。
+    计算追随者涉及多少流派、跨流派边占比、影响分布是否集中。这样可以区分“在本流派内部影响广”和“把影响传播到多个流派”的艺术家。
+20. 选择一个可解释的子网络。
+    可以选择一个流派、一个时期，或某些艺术家的若干层邻域。写清选择规则和理由，使别人能够复现同一个子网络；图的规模应允许看清主要节点和方向。
+21. 解释网络结果。
+    输出影响力排名、子网络图和关键节点说明。区分“在完整网络中计算的指标”和“只在子网络内部计算的指标”，并指出哪些艺术家是影响源头、传播中介或跨流派连接者。
+这一阶段完成的标准是：不仅能画出网络，还能解释指标的含义，以及指标在选定子网络中揭示了什么。
+
+第四阶段建立音乐相似度，对应题目第 2 项。
+22. 选择基础音乐特征。
+    可从 danceability、energy、valence、tempo、loudness、acousticness、instrumentalness、liveness、speechiness、duration 开始。说明各特征为何能帮助描述风格；`popularity` 建议先作为描述变量，不纳入核心风格距离。
+23. 处理尺度差异。
+    BPM、分贝、毫秒和 0–1 指标不能直接按原始数值计算距离。对连续变量做合理转换和标准化：
+    \[
+    z_{ik}=\frac{x_{ik}-\mu_k}{\sigma_k}.
+    \]
+    保留标准化参数，跨流派和跨时期比较使用一致口径。
+24. 单独处理类别特征。
+    mode 可以用大调比例等方式汇总；`key` 是调号类别，不能把其整数编码直接当连续数值取平均并解释为音乐距离。若使用调号，采用类别分布等表示，并说明缺失调号的处理。
+25. 构造艺术家音乐画像。
+    为每位艺术家计算特征均值，并保留标准差和作品数量。作品很少的艺术家画像不稳定，应标记或设置最低样本量；涉及时间演化时，应计算分时期画像。
+26. 定义一个清楚的基础距离。
+    例如对标准化后的连续特征采用：
+    \[
+    d(i,j)=\sqrt{\frac{1}{m}\sum_{k=1}^{m}(z_{ik}-z_{jk})^2}.
+    \]
+    若需要“越大越相似”的表达，可设：
+    \[
+    S(i,j)=\frac{1}{1+d(i,j)}.
+    \]
+    基础模型先使用透明的等权设置，再检查特征选择和权重是否影响结论。
+27. 比较同流派与跨流派艺术家。
+    构造同流派艺术家对和不同流派艺术家对，控制年代分布和流派规模差异。避免大流派因为配对数量更多而支配整体结果，并同时报告各流派的结果。
+28. 报告差异、效应量和不确定性。
+    计算流派内外平均相似度差异、置信区间，并进行适当的置换检验或艺术家层面的重采样。大量配对会共享艺术家，不能把所有艺术家对都当成互相独立的观测。
+第五阶段比较流派，对应题目第 3 项。
+29. 制作流派特征画像。
+    计算各流派的标准化特征均值和分布，用热图等方式展示。明确这是歌曲加权还是艺术家等权的结果，并比较两种口径是否一致。
+30. 找出区分流派的特征。
+    量化各流派与其他流派在特征上的差异及其不确定性。关注差异大小和稳定性；如果特征高度相关，说明它们可能描述了部分相同的音乐属性。
+31. 构造流派间影响矩阵。
+    将艺术家边按流派汇总，得到“流派 A 影响流派 B”的关系数量。进一步计算输出比例或按可能连接数归一化的密度，避免把流派规模直接解释成影响强度。
+32. 比较流派相似性与影响关系。
+    并排分析流派距离矩阵和流派影响矩阵。检查哪些流派既相似又联系密切，哪些流派存在较强联系但特征差异仍然较大。
+33. 计算流派随时间的特征变化。
+    按合适时间窗口计算各流派特征轨迹，附带样本量和不确定性。检查总体变化是否只是不同艺术家或歌曲进入样本造成的构成变化。
+34. 形成对流派问题的直接回答。
+    对所分析流派说明：主要特征是什么、与谁相近、主要影响输入与输出来自哪里、哪些特征随时间变化。明确数据提供的是艺术家的主要流派标签，不能据此直接还原每首歌的流派变化。
+第六阶段检验影响关系是否有音乐特征证据，对应题目第 4 项。
+35. 建立可检验的影响关系样本。
+    选择双方均有可靠音乐画像的关系，并记录每条关系的流派、年代、作品数量和身份匹配情况。
+36. 为影响关系建立合理对照组。
+    对同一个追随者，从没有被记录为其影响来源的艺术家中选择对照。尽量匹配候选影响者的流派、年代和数据覆盖程度。这里的对照应称为“未记录关系”，而不是“确定没有影响”。
+37. 处理合作歌曲和重复参与带来的依赖。
+    检查两位艺术家是否共同参与同一首歌曲；共同作品可能直接抬高相似度。比较排除共同作品前后的结果，并在统计推断中考虑同一艺术家参与多条关系的问题。
+38. 检验影响关系是否具有额外相似性。
+    比较真实记录关系与匹配对照的相似度：
+    \[
+    \Delta S=
+    \overline{S}_{\text{记录的影响关系}}
+    -
+    \overline{S}_{\text{匹配对照}}.
+    \]
+    报告差值、区间和检验结果，并检查不同流派、年代是否表现一致。
+39. 分析哪些特征更容易“传递”。
+    对每个标准化特征，比较真实关系与对照关系的特征差距。可以定义：
+    \[
+    \Delta_k=
+    \overline{|z_{ik}-z_{jk}|}_{\text{对照}}
+    -
+    \overline{|z_{ik}-z_{jk}|}_{\text{影响关系}}.
+    \]
+    较大的正值表示该特征在记录关系中更接近；对多特征检验处理多重比较问题。
+40. 必要时增加一个预测检验。
+    这是增强项：比较“只使用年代、流派等背景信息”与“再加入影响者音乐特征”的模型，看后者能否改善未参与拟合样本上的预测。若做这一项，必须按艺术家或时间合理划分数据。
+41. 检查时间顺序和解释边界。
+    数据允许时，用影响者较早作品与追随者较晚作品比较。使用整个职业生涯的平均画像时，需要说明其中可能混入未来作品。即使控制了流派和年代，仍不能完全排除共同环境或未观测因素。
+42. 形成有分寸的结论。
+    将结论写成“与影响关系一致的音乐特征证据”“控制部分因素后仍存在关联”等，并列出例外。某些关系缺乏特征相似证据，也可能是影响发生在歌词、演奏技巧或其他未测量维度。
+这一阶段的完成标准是：我们能说明“比什么更相似、控制了什么、证据有多强、还有什么解释无法排除”。
+
+第七阶段识别重大变化与革命性艺术家，对应题目第 5 项。
+43. 预先定义什么叫重大变化。
+    例如，多个音乐特征出现幅度明显、持续若干时期、且超过通常波动的变化。把判定规则写在结果之前，避免看到某个艺术家后再调整标准。
+44. 构造时间特征序列。
+    分别计算全体样本和各流派的分时期特征向量。稀疏年份合并为更长窗口，保证比较使用相同尺度，并展示各时期样本量。
+45. 计算变化幅度或拟合变点模型。
+    基础方法可以比较相邻时间窗口的特征向量距离，也可以拟合分段均值模型。记录候选变化时间、主要变化特征和幅度。
+46. 验证变化是否稳定。
+    改变窗口长度、抽样口径和最低样本量，检查候选变化是否仍出现。搜索多个候选时间点时，处理选择和多重检验问题，并排除少量异常记录主导结果的情况。
+47. 建立革命性艺术家的证据标准。
+    至少考察两个维度：其早期作品相对之前音乐是否具有新颖性，以及这种特征是否在后续艺术家或作品中出现。网络影响力可以提供补充证据，但单纯追随者多不足以证明创新。
+48. 完成少量案例分析。
+    对选出的候选艺术家展示：此前的音乐背景、其较早作品特征、后续传播证据和时间顺序。可以保留“高度创新但传播有限”或“影响广但风格较传统”的对照案例，使定义更清楚。
+第八阶段深入研究一个流派的动态过程，对应题目第 6 项。
+49. 按数据条件选择一个流派。
+    查看艺术家数量、作品数量、跨时期覆盖和关系完整性，再确定深入研究对象。Jazz、Pop/Rock 等可以作为候选，但最终选择应由数据支持。
+50. 明确动态网络的构造含义。
+    可以按开始活跃年代构建艺术家群组或分期子图，但必须说明：这些是利用现有关系重建的年代视图，不能当成当年实际已被观测到的完整网络。
+51. 定义分时期影响力。
+    计算各艺术家对不同年代追随者的联系数量、占比或其他指标。对追随者群组规模和观察时长进行调整，避免较早艺术家仅因积累时间更长而天然占优。
+52. 计算分时期音乐画像。
+    对流派及其主要艺术家计算各时期特征、内部差异和样本量。检查改变来自既有艺术家的风格变化，还是新艺术家的进入。
+53. 识别动态影响者。
+    比较不同时期的影响力排名、跨流派输入和特征变化，找出地位上升、下降或保持稳定的艺术家。把排名变化和音乐特征证据联系起来。
+54. 写出有证据的流派发展过程。
+    将这个流派划分为数据支持的若干阶段，解释各阶段主要影响来源和音乐特征变化。每个阶段都应有图表或数值依据，不必强行划分固定数量的阶段。
+第九阶段讨论文化与外部环境，对应题目第 7 项。
+55. 选择数据确实能观察到的传播指标。
+    例如跨流派边比例、流派间联系方向、跨年代传播范围、连接不同流派的艺术家。解释这些指标能揭示怎样的音乐风格传播。
+56. 区分描述结果与外部原因解释。
+    网络和音频特征可以显示某时期发生变化，但现有数据没有直接提供社会事件、技术采用或政治环境变量。相关背景可以引用文献讨论，不能直接把时间上的对应写成因果结论。
+57. 分析数据覆盖和记录方式的限制。
+    讨论艺术家与专家报告的选择性、歌曲样本覆盖、主要流派标签的简化、年代分布失衡，以及当前热度指标无法代表历史热度等问题。也要说明音乐流派之间的联系不等于已经测量了地域、语言或族群之间的文化影响。
+58. 提出更丰富数据下的研究方案。
+    说明如果增加影响形成时间、作品级流派、歌词或结构特征、地域语言、传播渠道和听众数据，哪些问题可以更可靠地回答。这部分用于未来研究建议，不把这些额外数据加入当前分析。
+第十阶段集中完成验证和敏感性分析。这部分直接对应课程评分中的“验证与批判性评估”。
+59. 检查数据和计算是否正确。
+    人工核对少量艺术家、关系和歌曲的处理过程；检查合并后的数量、聚合权重、边方向和统计分母。用简单的小例子确认指标计算符合定义。
+60. 建立统计基线。
+    使用匹配对照、合理置换或约束下的随机网络，检验观察到的结果是否超出规模、年代和流派结构本身所能解释的程度。记录随机种子和重复次数。
+61. 检查模型设定的敏感性。
+    至少比较距离定义、标准化方法、特征组合、时间窗口和网络指标。选择少量有明确目的的替代设定，汇总其对主要结论的影响。
+62. 检查样本选择的敏感性。
+    比较不同最低作品数、合作歌曲处理、重复记录处理，以及含歧义 ID 的记录保留或排除后的结果。说明结论是否主要依赖某一小部分样本。
+63. 检查时间信息使用是否合理。
+    对任何预测或历史时点分析，确认没有使用该时点之后的作品信息来构造解释变量。无法避免事后重建时，在报告中明确标注。
+64. 给结论划分证据强度。
+    区分稳定结论、对设定敏感的结论，以及当前数据无法确定的问题。允许得到“没有发现稳定差异”这样的结果，不为了完整故事而强行得出正面结论。
+第十一阶段写报告。建议分析完成一部分就写对应方法和结果，最后再写摘要。
+65. 先安排报告篇幅。
+    一个可行预算是：Summary 1 页、目录 1 页、正文约 19 页、ICM 文档 1 页、参考文献约 2 页，共约 24 页，剩余一页机动。多人团队的贡献说明另加在最后。
+66. 按“问题—模型—结果—检验”写正文。
+    每个模型都写清输入、符号、公式、参数选择、输出及适用条件。每项题目要求都能在正文中找到明确回答。
+67. 规划图表并写出解释。
+    核心图表应覆盖数据分布、影响网络、流派画像、相似度比较、匹配对照、特征传递、时间变化和稳健性。图注写清样本、单位和统计口径；正文解释图支持的结论。
+68. 最后写一页 Summary Sheet。
+    包括研究问题、核心方法、最重要的定量结果和主要限制，使读者不看正文也能理解研究价值。页顶部加入全体成员姓名和学号。
+69. 单独写一页给 ICM Society 的文档。
+    面向音乐、历史、社会科学等不同背景的读者，说明方法价值、发现的意义、数据更丰富后如何改进，以及建议开展什么研究。语言应减少公式和术语。
+70. 整理引用和贡献说明。
+    引用借鉴的方法、观点、代码和图示；参考优秀论文时记录具体借鉴之处。课程允许使用 AI 且不要求特别声明，但每位成员仍需理解和负责提交内容。最后写清实际分工。
+第十二阶段整理可复现代码。
+71. 建立简洁的项目结构。
+    将原始数据、清洗与分析程序、生成结果、图表和说明文件分开存放。保留从原始数据到结果的完整链条，避免关键处理只存在于临时操作中。
+72. 提供明确的运行入口和 README。
+    写清环境与依赖版本、安装方式、运行顺序、随机种子和主要参数。README 中列出全体成员姓名学号，以及“哪个程序生成哪张图、哪个表或哪项结果”。
+73. 保存报告使用的数值结果。
+    将核心统计量、排名、检验结果和图表源数据导出为可追溯文件。报告中的数字应能对应到这些输出，避免人工复制过程中失去来源。
+74. 从干净目录完整运行一次。
+    模拟助教拿到代码压缩包后的使用过程：解压、按 README 配置、从头运行。检查能否生成报告中的全部图表和数值，是否依赖本机绝对路径或未保存的交互状态。
+75. 整理代码压缩包。
+    包含实际使用的输入数据、必要程序、配置和 README。去掉虚拟环境、缓存和无关临时文件，检查压缩包解开后的目录结构清楚可用。
+第十三阶段制作 slides 并准备答辩。
+76. 把 slides 组织为最多 8 页。
+    可以采用以下顺序：
+    1. 项目问题、主要结论、成员信息。
+    2. 数据、关键限制和整体方法。
+    3. 影响网络与关键艺术家。
+    4. 音乐相似度与流派比较。
+    5. 影响关系检验与特征传递。
+    6. 革命性变化与候选艺术家。
+    7. 一个流派的动态演化及文化讨论。
+    8. 稳健性、限制和最终结论。
+77. 确保 slides 可以独立阅读。
+    每页围绕一个主要结论，使用清楚的图表和简短解释。图的字号、图例和坐标在展示时应可读，结论中的数值与报告一致。
+78. 准备一段 60–90 秒项目概述。
+    说明研究问题、关键方法、最有说服力的发现和主要限制。答辩只有 5–10 分钟，应给提问和回答留出主要时间。
+79. 建立答辩问题清单并写出答案要点。
+    至少准备这些问题：
+    - 为什么采用这个方向的边？
+    - 为什么选择这些影响力指标？
+    - 为什么音乐特征需要标准化？
+    - 为什么同流派更相似不等于存在直接影响？
+    - 对照组是怎样选择的？
+    - 为什么提供的汇总表与逐曲表不一致？
+    - 怎样区分重大变化和随机波动？
+    - 为什么选这些革命性艺术家？
+    - 没有影响发生日期，动态分析如何成立？
+    - 更换距离、时间窗口或样本范围，结论是否改变？
+    - 数据不支持哪些结论？
+    - 如何从原始数据复现某一张图？
+80. 让每位成员交叉检查整个项目。
+    轮流解释其他成员负责的模型、图表和代码，并做模拟提问。课程允许向具体成员询问任何部分，所有成员都需要出席答辩。
+第十四阶段完成提交检查。
+81. 按要求命名三个文件。
+    根据实际人数列出升序学号，采用课程规定的报告、代码和 slides 命名方式。确保三份文件中的成员信息完全一致。
+82. 做最终一致性检查。
+    核对报告页数、slides 页数、ICM 文档、贡献说明、参考文献、图表编号和正文数字；检查 PDF 能打开、图片清楚、公式和引用正常。
+83. 在截止前上传 Blackboard。
+    提前预留上传和网络问题的时间。上传后核对系统中的三个文件是否为最终版本，而不是只确认本地文件正确。
+84. 保存提交凭证并持续准备答辩。
+保存最终提交版本及其代码输出，查看 Blackboard 的答辩安排。后续练习以已提交版本为准，确保每位成员熟悉其中的实际内容。
+
+<w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblCellSpacing w:w="15" w:type="dxa"/><w:tblInd w:w="0" w:type="dxa"/><w:tblBorders><w:top w:val="none" w:color="auto" w:sz="0" w:space="0"/><w:left w:val="none" w:color="auto" w:sz="0" w:space="0"/><w:bottom w:val="none" w:color="auto" w:sz="0" w:space="0"/><w:right w:val="none" w:color="auto" w:sz="0" w:space="0"/><w:insideH w:val="none" w:color="auto" w:sz="0" w:space="0"/><w:insideV w:val="none" w:color="auto" w:sz="0" w:space="0"/></w:tblBorders><w:shd w:val="clear"/><w:tblLayout w:type="autofit"/><w:tblCellMar><w:top w:w="15" w:type="dxa"/><w:left w:w="15" w:type="dxa"/><w:bottom w:w="15" w:type="dxa"/><w:right w:w="15" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid><w:gridCol w:w="1793"/><w:gridCol w:w="2722"/><w:gridCol w:w="3881"/></w:tblGrid><w:tr w14:paraId="52F3921B"><w:trPr><w:tblHeader/><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="21C6FEA5"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="center"/><w:rPr><w:b/><w:bCs/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:b/><w:bCs/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>时间
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="0237C64A"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="center"/><w:rPr><w:b/><w:bCs/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:b/><w:bCs/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>主要工作
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="3F747A12"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="center"/><w:rPr><w:b/><w:bCs/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:b/><w:bCs/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>当天或阶段结束时应该拿到什么
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="2C203013"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 12–14 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="07A5378A"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>明确口径、数据核对、清洗和探索
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="27424E1C"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>清洗程序、数据问题清单、分析样本、初步分布图
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="2CCAF551"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 15–17 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="65D53E15"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>网络、相似度和流派比较
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="4D681A34"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>网络指标、子网络、相似度定义、第一批结果图
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="708E6DCE"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 18–20 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="255C2DDC"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>影响关系检验和特征传递
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="2109D9B5"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>匹配对照、效应量、区间、特征层面结果
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="3B730B93"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 21–23 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="209DCF79"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>重大变化、单流派动态和文化讨论
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="5E8A67B8"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>候选变化点、艺术家案例、动态分析
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="3C3E894D"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 24–25 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="0C67D24C"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>稳健性检查、完成正文
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="6A9C4DA5"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>完整结果、敏感性分析、报告初稿
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="2E1233E4"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 26 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="13D74409"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>摘要、ICM 文档、slides
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="6397E57A"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>三部分完整初稿
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="10C34D8C"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 27 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="59E7F915"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>干净环境复现、全员互审
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="116C5E81"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>可运行代码包、问题修正清单
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="7B994E0C"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 28 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="336D3C76"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>排版、图表和最终检查
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="246FA43D"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>可提交的三个文件
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="0BDA0AB0"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>11 月 29 日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="011E2AAC"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>上传和确认
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="2CA9802F"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>提交成功记录
+<w:trPr><w:tblCellSpacing w:w="15" w:type="dxa"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="4465BB79"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>提交后至指定答辩日
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="341BDEFF"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>模拟问答、复习模型与代码
+<w:tcPr><w:tcW w:w="0" w:type="auto"/><w:shd w:val="clear"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="7349D56C"><w:pPr><w:keepNext w:val="0"/><w:keepLines w:val="0"/><w:widowControl/><w:suppressLineNumbers w:val="0"/><w:jc w:val="left"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="宋体" w:hAnsi="宋体" w:eastAsia="宋体" w:cs="宋体"/><w:kern w:val="0"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-CN" w:bidi="ar"/></w:rPr><w:t>每位成员能解释所有核心结果
+
