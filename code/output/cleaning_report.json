@@ -1,0 +1,37 @@
+{
+  "ambiguous_id_name_fix": {
+    "303506": "Usher",
+    "893383": "The Muffs",
+    "957340": "Helloween"
+  },
+  "influence_data": {
+    "rows_before": 42770,
+    "rows_after": 42770
+  },
+  "full_music_data": {
+    "rows_before": 98340,
+    "rows_after": 96983,
+    "duplicate_rows_removed": 1357
+  },
+  "dedup_group_by": [
+    "song_title (censored)",
+    "artist_names (sorted)"
+  ],
+  "dedup_feature_columns": [
+    "danceability",
+    "energy",
+    "valence",
+    "tempo",
+    "loudness",
+    "mode",
+    "key",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "speechiness",
+    "explicit",
+    "duration_ms",
+    "year"
+  ],
+  "dedup_note": "同名同作者且上述字段完全一致 -> 删重复(保留首条)；任一字段不同 -> 视为两首歌保留"
+}

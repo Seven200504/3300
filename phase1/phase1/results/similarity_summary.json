@@ -1,0 +1,27 @@
+{
+  "reference_artists": 3072,
+  "descriptive_artists": 3013,
+  "descriptive_genres": 14,
+  "controlled_artists": 2933,
+  "controlled_genres": 14,
+  "macro_within": 0.5024213966250116,
+  "macro_between": 0.437810078302352,
+  "macro_delta": 0.06461131832265955,
+  "unadjusted_macro_delta": 0.0754543637693218,
+  "positive_genres": 14,
+  "permutation_B": 499,
+  "permutation_p": 0.002,
+  "null_mean": -8.834501563339362e-05,
+  "null_95_percentiles": [
+    -0.0034979351844766017,
+    0.003336656750581874
+  ],
+  "pc1_pc2_variance": 0.4860036668670149,
+  "pcs_for90pct": 7,
+  "full_pca_distance_error": 7.105427357601002e-15,
+  "pca90_distance_rank_correlation": 0.9942181944588742,
+  "r4_supported_edges": 24888,
+  "r4_edges_with5controls": 24145,
+  "feature_correlation_energy_loudness": 0.827080757981954,
+  "feature_correlation_energy_acousticness": -0.8394030132230116
+}

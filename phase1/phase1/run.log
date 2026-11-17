@@ -1,0 +1,92 @@
+
+Running 01_prepare.py
+{
+  "nodes": 5600,
+  "edges": 42689,
+  "removed_edges_identity": 81,
+  "deduplicated_tracks": 98151,
+  "usable_credits": 100928,
+  "artists_features": 5557,
+  "artists_at_least5": 3073,
+  "artist_decade_rows": 10543,
+  "temporal_credits": 98183
+}
+
+Running 02_network.py
+{
+  "nodes": 5600,
+  "edges": 42689,
+  "weak_components": 4,
+  "isolates": 1,
+  "known_genre_edges": 42678,
+  "cross_genre_edges": 9996,
+  "cross_genre_fraction": 0.23421903556867707,
+  "top1pct_artist_count": 56,
+  "top1pct_edge_share": 0.18960387921947106,
+  "top20_edge_share": 0.10100962777296259,
+  "pr_residual_l1": 2.3190980988737264e-09,
+  "toy_star_pr": {
+    "0": 0.5419847328244844,
+    "1": 0.1526717557251718,
+    "2": 0.1526717557251718,
+    "3": 0.1526717557251718
+  },
+  "pr_start_decade_spearman": -0.5946645480825757,
+  "selected_genre": "Vocal",
+  "sub_nodes": 162,
+  "sub_edges": 537,
+  "sub_global_local_spearman": 0.7612573196559799,
+  "sub_view_nodes": 14,
+  "sub_view_edges": 22
+}
+
+Running 03_similarity.py
+{
+  "reference_artists": 3072,
+  "descriptive_artists": 3013,
+  "descriptive_genres": 14,
+  "controlled_artists": 2933,
+  "controlled_genres": 14,
+  "macro_within": 0.5024213966250116,
+  "macro_between": 0.437810078302352,
+  "macro_delta": 0.06461131832265955,
+  "unadjusted_macro_delta": 0.0754543637693218,
+  "positive_genres": 14,
+  "permutation_B": 499,
+  "permutation_p": 0.002,
+  "null_mean": -8.834501563339362e-05,
+  "null_95_percentiles": [
+    -0.0034979351844766017,
+    0.003336656750581874
+  ],
+  "pc1_pc2_variance": 0.4860036668670149,
+  "pcs_for90pct": 7,
+  "full_pca_distance_error": 7.105427357601002e-15,
+  "pca90_distance_rank_correlation": 0.9942181944588742,
+  "r4_supported_edges": 24888,
+  "r4_edges_with5controls": 24145,
+  "feature_correlation_energy_loudness": 0.827080757981954,
+  "feature_correlation_energy_acousticness": -0.8394030132230116
+}
+                            variant  artists  genres  macro_difference  positive_genres
+                     Main Euclidean     2933      14          0.064611               14
+                             Cosine     2933      14          0.288635               14
+           PCA 7 PCs (90% variance)     2933      14          0.067459               14
+                          PCA 2 PCs     2933      14          0.072066               14
+                   Exclude loudness     2933      14          0.065646               14
+   Exclude liveness and speechiness     2933      14          0.062496               13
+                   At least 3 songs     3721      16          0.064108               16
+                  At least 10 songs     1939      13          0.059369               12
+   Fractional collaborative credits     2933      14          0.064092               14
+                     Artist medians     2933      14          0.062332               13
+Solo-only (common eligible artists)     2752      14          0.064499               13
+      Main on solo-eligible artists     2752      14          0.065402               13
+    Keep ambiguous IDs (diagnostic)     2935      14          0.064626               14
+
+Running 04_checks.py
+{'independent_focal_max_error': 2.0816681711721685e-16, 'focal_checks': 8, 'r2_missing_contrasts': 0, 'genre_coverage_main': 14, 'genre_coverage_exploratory': 19, 'main_sample_before1960': 576}
+
+Running 05_report.py
+/private/tmp/mat3300_phase1_work/phase1/report/phase1_report.html
+
+Finished. Open report/phase1_report.html

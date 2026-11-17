@@ -1,0 +1,5 @@
+comparison,spearman,top20_overlap
+PR alpha 0.7,0.9993514320186935,19
+PR alpha 0.95,0.9997389510675095,18
+Keep ambiguous IDs (common-node comparison),0.9999642835015898,20
+Out-degree versus reverse PR,0.9544000713630523,4

@@ -1,0 +1,21 @@
+genre,n,outgoing,outgoing_cross,internal_edges
+Avant-Garde,11,79,72,7
+Blues,101,1243,871,372
+Children's,4,3,1,2
+Classical,28,114,97,17
+Comedy/Spoken,46,152,51,101
+Country,403,3301,796,2502
+Easy Listening,23,76,58,18
+Electronic,208,710,338,372
+Folk,95,1010,739,271
+International,81,328,245,81
+Jazz,406,2716,947,1769
+Latin,229,621,216,405
+New Age,38,94,47,47
+Pop/Rock,2806,24112,2088,22020
+R&B,676,5478,2136,3342
+Reggae,141,806,222,584
+Religious,89,247,92,155
+Stage & Screen,50,183,103,80
+Unknown,3,2,0,0
+Vocal,162,1414,877,537

@@ -1,0 +1,70 @@
+{
+  "influence_data": {
+    "rows": 42770,
+    "columns": 8,
+    "missing_cells": 0,
+    "duplicate_rows": 0,
+    "sha256": "0f9d1d30ef3d0c268d5441b3083094515a3588aa500aaa1083e4faa1319aff7c"
+  },
+  "full_music_data": {
+    "rows": 98340,
+    "columns": 19,
+    "missing_cells": 0,
+    "duplicate_rows": 189,
+    "sha256": "c6a1c525cdd711754c51f71430014403e24c0a1843b0e089057098bb4cc5ef3f"
+  },
+  "data_by_artist": {
+    "rows": 5854,
+    "columns": 16,
+    "missing_cells": 0,
+    "duplicate_rows": 0,
+    "sha256": "f00da734490f725d9a50697a40c800ffd33ee02da56fc571976d17ca3e52cca4"
+  },
+  "data_by_year": {
+    "rows": 100,
+    "columns": 14,
+    "missing_cells": 0,
+    "duplicate_rows": 0,
+    "sha256": "e4c948eddca1c81d37a99acdadab4e72506991fe48066907ae0eef0c401438ab"
+  },
+  "raw_checks": {
+    "network_nodes": 5603,
+    "conflicting_ids": [
+      303506,
+      893383,
+      957340
+    ],
+    "duplicate_edges": 0,
+    "self_edges": 0,
+    "multi_artist_tracks": 4410,
+    "artist_song_credits": 103487,
+    "detailed_artist_ids": 5810,
+    "summary_count_total": 198733,
+    "matching_counts": 241,
+    "matching_all_means_1e5": 3006,
+    "missing_song_years": [
+      1922,
+      1923
+    ],
+    "release_year_conflicts": 4,
+    "credits_before_career": 2756,
+    "artists_before_career": 288,
+    "tempo_zero": 26,
+    "positive_loudness": 15,
+    "duration_under_30s": 29,
+    "duration_over_20min": 83,
+    "edges_later_start": 733,
+    "edges_same_start": 8477
+  },
+  "prepared": {
+    "nodes": 5600,
+    "edges": 42689,
+    "removed_edges_identity": 81,
+    "deduplicated_tracks": 98151,
+    "usable_credits": 100928,
+    "artists_features": 5557,
+    "artists_at_least5": 3073,
+    "artist_decade_rows": 10543,
+    "temporal_credits": 98183
+  }
+}

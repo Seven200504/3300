@@ -1,0 +1,26 @@
+{
+  "nodes": 5600,
+  "edges": 42689,
+  "weak_components": 4,
+  "isolates": 1,
+  "known_genre_edges": 42678,
+  "cross_genre_edges": 9996,
+  "cross_genre_fraction": 0.23421903556867707,
+  "top1pct_artist_count": 56,
+  "top1pct_edge_share": 0.18960387921947106,
+  "top20_edge_share": 0.10100962777296259,
+  "pr_residual_l1": 2.3190980988737264e-09,
+  "toy_star_pr": {
+    "0": 0.5419847328244844,
+    "1": 0.1526717557251718,
+    "2": 0.1526717557251718,
+    "3": 0.1526717557251718
+  },
+  "pr_start_decade_spearman": -0.5946645480825757,
+  "selected_genre": "Vocal",
+  "sub_nodes": 162,
+  "sub_edges": 537,
+  "sub_global_local_spearman": 0.7612573196559799,
+  "sub_view_nodes": 14,
+  "sub_view_edges": 22
+}

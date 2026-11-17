@@ -1,0 +1,184 @@
+variant,genre,difference
+Main Euclidean,Blues,0.04974586216509495
+Main Euclidean,Comedy/Spoken,0.08444461016348796
+Main Euclidean,Country,0.09943419759929581
+Main Euclidean,Electronic,0.019492800315220042
+Main Euclidean,Folk,0.05590731352718358
+Main Euclidean,International,0.006101546353694813
+Main Euclidean,Jazz,0.06726646599954961
+Main Euclidean,Latin,0.058374508370309684
+Main Euclidean,Pop/Rock,0.04695044107836135
+Main Euclidean,R&B,0.07770263400511149
+Main Euclidean,Reggae,0.10867728918855579
+Main Euclidean,Religious,0.06481379420453845
+Main Euclidean,Stage & Screen,0.07778315822115099
+Main Euclidean,Vocal,0.0878638353256791
+Cosine,Blues,0.0512470888030841
+Cosine,Comedy/Spoken,0.7055541812482694
+Cosine,Country,0.27494980297077876
+Cosine,Electronic,0.18930988254356512
+Cosine,Folk,0.27321152176164915
+Cosine,International,0.004863577644681195
+Cosine,Jazz,0.37873505132654267
+Cosine,Latin,0.18059274620315124
+Cosine,Pop/Rock,0.13512284608510955
+Cosine,R&B,0.24305639701536527
+Cosine,Reggae,0.5019297511100895
+Cosine,Religious,0.2873787854942048
+Cosine,Stage & Screen,0.5008334060225622
+Cosine,Vocal,0.3140998031249637
+PCA 7 PCs (90% variance),Blues,0.05359869186777719
+PCA 7 PCs (90% variance),Comedy/Spoken,0.09110089230583847
+PCA 7 PCs (90% variance),Country,0.10391284277755654
+PCA 7 PCs (90% variance),Electronic,0.019052715893692083
+PCA 7 PCs (90% variance),Folk,0.05610373800481865
+PCA 7 PCs (90% variance),International,0.0036663019530582953
+PCA 7 PCs (90% variance),Jazz,0.07218675910354641
+PCA 7 PCs (90% variance),Latin,0.06290088014153258
+PCA 7 PCs (90% variance),Pop/Rock,0.04753562496790082
+PCA 7 PCs (90% variance),R&B,0.08080555794013114
+PCA 7 PCs (90% variance),Reggae,0.11392158515993463
+PCA 7 PCs (90% variance),Religious,0.0653993578361597
+PCA 7 PCs (90% variance),Stage & Screen,0.08316366694567107
+PCA 7 PCs (90% variance),Vocal,0.09107272559804709
+PCA 2 PCs,Blues,0.06480906377388616
+PCA 2 PCs,Comedy/Spoken,0.07109485482903113
+PCA 2 PCs,Country,0.09659213894440348
+PCA 2 PCs,Electronic,0.0076049597519775546
+PCA 2 PCs,Folk,0.0661269267402871
+PCA 2 PCs,International,0.006914318174392578
+PCA 2 PCs,Jazz,0.05515120809572942
+PCA 2 PCs,Latin,0.06700990736380037
+PCA 2 PCs,Pop/Rock,0.040691108759502215
+PCA 2 PCs,R&B,0.0882591565440239
+PCA 2 PCs,Reggae,0.15837826691448154
+PCA 2 PCs,Religious,0.06579642424631388
+PCA 2 PCs,Stage & Screen,0.14186413641644854
+PCA 2 PCs,Vocal,0.07863651321240638
+Exclude loudness,Blues,0.05198173561794557
+Exclude loudness,Comedy/Spoken,0.0794972336367497
+Exclude loudness,Country,0.10042007025275593
+Exclude loudness,Electronic,0.022702023097958077
+Exclude loudness,Folk,0.05511013516894656
+Exclude loudness,International,0.009569785435123004
+Exclude loudness,Jazz,0.07052568939013161
+Exclude loudness,Latin,0.0580952915554172
+Exclude loudness,Pop/Rock,0.04715868706177543
+Exclude loudness,R&B,0.07632625806465793
+Exclude loudness,Reggae,0.11196906175823332
+Exclude loudness,Religious,0.06488078647764917
+Exclude loudness,Stage & Screen,0.08057078418994268
+Exclude loudness,Vocal,0.09023686251040983
+Exclude liveness and speechiness,Blues,0.05321312994169096
+Exclude liveness and speechiness,Comedy/Spoken,0.05575531405494875
+Exclude liveness and speechiness,Country,0.0924145300336553
+Exclude liveness and speechiness,Electronic,0.02082635584574962
+Exclude liveness and speechiness,Folk,0.0617629456814355
+Exclude liveness and speechiness,International,-0.0025220307074495254
+Exclude liveness and speechiness,Jazz,0.07226016351452828
+Exclude liveness and speechiness,Latin,0.048832508293211854
+Exclude liveness and speechiness,Pop/Rock,0.03812739076794204
+Exclude liveness and speechiness,R&B,0.07726206995984247
+Exclude liveness and speechiness,Reggae,0.11503428946837838
+Exclude liveness and speechiness,Religious,0.06842451785407218
+Exclude liveness and speechiness,Stage & Screen,0.07924407912038298
+Exclude liveness and speechiness,Vocal,0.09431500321615839
+At least 3 songs,Blues,0.04241103688391802
+At least 3 songs,Classical,0.12431541164360582
+At least 3 songs,Comedy/Spoken,0.08051550345674342
+At least 3 songs,Country,0.09788859274735966
+At least 3 songs,Easy Listening,0.04182528944411941
+At least 3 songs,Electronic,0.02720020627382618
+At least 3 songs,Folk,0.0606754504708082
+At least 3 songs,International,0.00865920721844212
+At least 3 songs,Jazz,0.05784869521459767
+At least 3 songs,Latin,0.05478439463047954
+At least 3 songs,Pop/Rock,0.04438620027542026
+At least 3 songs,R&B,0.07406195599716299
+At least 3 songs,Reggae,0.09552410313227679
+At least 3 songs,Religious,0.054511209279794914
+At least 3 songs,Stage & Screen,0.07872482953188956
+At least 3 songs,Vocal,0.08239970900196857
+At least 10 songs,Blues,0.05237441281861197
+At least 10 songs,Country,0.09911273010472009
+At least 10 songs,Electronic,0.02931629100415624
+At least 10 songs,Folk,0.06008611440974154
+At least 10 songs,International,-0.009993577976794676
+At least 10 songs,Jazz,0.06423289427416473
+At least 10 songs,Latin,0.04171505003991933
+At least 10 songs,Pop/Rock,0.03783481859436013
+At least 10 songs,R&B,0.07766396045471376
+At least 10 songs,Reggae,0.09659476114032088
+At least 10 songs,Religious,0.06091029035086256
+At least 10 songs,Stage & Screen,0.06307302855720752
+At least 10 songs,Vocal,0.09887080443711045
+Fractional collaborative credits,Blues,0.04984768639084751
+Fractional collaborative credits,Comedy/Spoken,0.08435385223938029
+Fractional collaborative credits,Country,0.09906170236939753
+Fractional collaborative credits,Electronic,0.020720476868290375
+Fractional collaborative credits,Folk,0.05596643718849157
+Fractional collaborative credits,International,0.005906080394486064
+Fractional collaborative credits,Jazz,0.06426731653178021
+Fractional collaborative credits,Latin,0.059208123066000005
+Fractional collaborative credits,Pop/Rock,0.04732033823583482
+Fractional collaborative credits,R&B,0.07650786545356213
+Fractional collaborative credits,Reggae,0.10131227235597663
+Fractional collaborative credits,Religious,0.06782094400727809
+Fractional collaborative credits,Stage & Screen,0.07622564027638229
+Fractional collaborative credits,Vocal,0.08876730070434888
+Artist medians,Blues,0.04737772000446005
+Artist medians,Comedy/Spoken,0.1100983648781617
+Artist medians,Country,0.08938334272300913
+Artist medians,Electronic,0.015183124578528608
+Artist medians,Folk,0.06906004034509204
+Artist medians,International,-0.0010636296698372982
+Artist medians,Jazz,0.04759434808802899
+Artist medians,Latin,0.05200528025232435
+Artist medians,Pop/Rock,0.048360142756522805
+Artist medians,R&B,0.07559146175780258
+Artist medians,Reggae,0.09511058668529528
+Artist medians,Religious,0.05808431946943622
+Artist medians,Stage & Screen,0.08692023506570108
+Artist medians,Vocal,0.07893841696610863
+Solo-only (common eligible artists),Blues,0.04839621648334713
+Solo-only (common eligible artists),Comedy/Spoken,0.08397286900526896
+Solo-only (common eligible artists),Country,0.09886948869286917
+Solo-only (common eligible artists),Electronic,0.019214690373845895
+Solo-only (common eligible artists),Folk,0.055603462276844894
+Solo-only (common eligible artists),International,-0.011331749892817796
+Solo-only (common eligible artists),Jazz,0.0664230738861629
+Solo-only (common eligible artists),Latin,0.056957569297755896
+Solo-only (common eligible artists),Pop/Rock,0.046144146343272956
+Solo-only (common eligible artists),R&B,0.07350810264717784
+Solo-only (common eligible artists),Reggae,0.10015104326174129
+Solo-only (common eligible artists),Religious,0.06637821088051714
+Solo-only (common eligible artists),Stage & Screen,0.10862962965678029
+Solo-only (common eligible artists),Vocal,0.09007071868249593
+Main on solo-eligible artists,Blues,0.050183119912958644
+Main on solo-eligible artists,Comedy/Spoken,0.08446309178677465
+Main on solo-eligible artists,Country,0.09907770809105058
+Main on solo-eligible artists,Electronic,0.01876956338592123
+Main on solo-eligible artists,Folk,0.054346576334317616
+Main on solo-eligible artists,International,-0.01275268409883592
+Main on solo-eligible artists,Jazz,0.07470593466351631
+Main on solo-eligible artists,Latin,0.055332903161883745
+Main on solo-eligible artists,Pop/Rock,0.04539189174206359
+Main on solo-eligible artists,R&B,0.07666903121417785
+Main on solo-eligible artists,Reggae,0.10693755083436925
+Main on solo-eligible artists,Religious,0.061169759781200324
+Main on solo-eligible artists,Stage & Screen,0.11227114253645397
+Main on solo-eligible artists,Vocal,0.08906739276872214
+Keep ambiguous IDs (diagnostic),Blues,0.04974586216509495
+Keep ambiguous IDs (diagnostic),Comedy/Spoken,0.08444700439057833
+Keep ambiguous IDs (diagnostic),Country,0.09941668070243899
+Keep ambiguous IDs (diagnostic),Electronic,0.019472038861276117
+Keep ambiguous IDs (diagnostic),Folk,0.05590731352718358
+Keep ambiguous IDs (diagnostic),International,0.006101546353694813
+Keep ambiguous IDs (diagnostic),Jazz,0.06726764628536124
+Keep ambiguous IDs (diagnostic),Latin,0.05835867464015875
+Keep ambiguous IDs (diagnostic),Pop/Rock,0.04695880869558055
+Keep ambiguous IDs (diagnostic),R&B,0.07797446027304734
+Keep ambiguous IDs (diagnostic),Reggae,0.10866872046240664
+Keep ambiguous IDs (diagnostic),Religious,0.06479692175377261
+Keep ambiguous IDs (diagnostic),Stage & Screen,0.07778315822115099
+Keep ambiguous IDs (diagnostic),Vocal,0.08786400046492007

@@ -1,0 +1,31 @@
+track_row,artist_names,year,release_date,tempo,duration_ms,valid_features,date_year_conflict
+3066,['Wolfgang Amadeus Mozart'],1953,1/1/1953,0.0,214307,False,False
+3129,['Wolfgang Amadeus Mozart'],1955,1/1/1955,0.0,11493,False,False
+3251,['Wolfgang Amadeus Mozart'],1927,1/1/2027,86.399,223826,True,True
+3393,['Wolfgang Amadeus Mozart'],1927,1/1/2027,83.462,220683,True,True
+3507,['Wolfgang Amadeus Mozart'],1929,1/1/2029,126.542,131565,True,True
+3603,['Wolfgang Amadeus Mozart'],1928,1/1/2028,72.309,226336,True,True
+6962,['Alfred Newman'],1947,1947,0.0,13600,False,False
+6965,['Alfred Newman'],1941,1941,0.0,14840,False,False
+11425,['Bernard Herrmann'],1947,1947,0.0,13959,False,False
+11943,['Bill Cosby'],1963,1963,0.0,215280,False,False
+12554,['Billie Holiday'],1937,1937,0.0,159600,False,False
+19705,['Charlie Parker'],1949,1949,0.0,635067,False,False
+21923,['Connie Francis'],1960,1/1/1960,0.0,179466,False,False
+21935,['Connie Francis'],1960,1/1/1960,0.0,253719,False,False
+26556,"['Dizzy Gillespie', 'Charlie Parker', 'Thelonious Monk']",1952,1/1/1952,0.0,14960,False,False
+33919,['Frank Sinatra'],1966,1966-07,0.0,60280,False,False
+42426,['Jean Ritchie'],1952,1952,0.0,95253,False,False
+43636,['Jimi Hendrix'],1968,10/25/1968,0.0,61773,False,False
+47528,['José Alfredo Jiménez'],1971,1/12/1971,0.0,144760,False,False
+51695,['Lata Mangeshkar'],1952,1/1/1952,0.0,179959,False,False
+57322,['Maria Callas'],1964,1964,0.0,55693,False,False
+67281,['Pearl Bailey'],1948,9/10/1948,0.0,192130,False,False
+72596,['Robert Earl Keen'],1998,10/27/1998,0.0,60372,False,False
+74740,['Sarah Vaughan'],1949,1949,0.0,6467,False,False
+74861,['Sarah Vaughan'],1949,1949,0.0,5108,False,False
+78672,['Steve Miller Band'],1977,1/1/1977,0.0,57467,False,False
+88083,['The Platters'],1959,1/1/1959,0.0,127093,False,False
+96005,['Waylon Jennings'],1973,7/1/1973,0.0,14708,False,False
+96605,['White Noise'],2018,4/23/2018,0.0,75000,False,False
+96978,['Willie Nelson'],1963,1/1/1963,0.0,147170,False,False

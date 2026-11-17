@@ -1,0 +1,21 @@
+genre,network_artists,artists_with_songs,artists_5songs,artists_3_decades_5songs
+Avant-Garde,11,11,7,0
+Blues,101,101,50,4
+Children's,4,4,4,0
+Classical,28,28,19,4
+Comedy/Spoken,46,46,22,0
+Country,403,401,254,36
+Easy Listening,23,23,19,1
+Electronic,208,206,76,2
+Folk,95,95,57,2
+International,81,81,39,4
+Jazz,406,404,228,18
+Latin,229,229,157,33
+New Age,38,38,10,1
+Pop/Rock,2806,2775,1478,140
+R&B,676,672,400,35
+Reggae,141,141,63,5
+Religious,89,89,41,1
+Stage & Screen,50,49,37,6
+Unknown,3,3,1,0
+Vocal,162,161,111,20

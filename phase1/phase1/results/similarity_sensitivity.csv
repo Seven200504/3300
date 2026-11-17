@@ -1,0 +1,14 @@
+variant,artists,genres,macro_difference,positive_genres
+Main Euclidean,2933,14,0.06461131832265955,14
+Cosine,2933,14,0.2886346315252869,14
+PCA 7 PCs (90% variance),2933,14,0.06745866717826178,14
+PCA 2 PCs,2933,14,0.07206635598333458,14
+Exclude loudness,2933,14,0.06564602887269257,14
+Exclude liveness and speechiness,2933,14,0.06249644764603909,13
+At least 3 songs,3721,16,0.06410823720015082,16
+At least 10 songs,1939,13,0.05936858293916113,12
+Fractional collaborative credits,2933,14,0.06409185972014689,14
+Artist medians,2933,14,0.062331696707188154,13
+Solo-only (common eligible artists),2752,14,0.06449910511394731,13
+Main on solo-eligible artists,2752,14,0.06540235586532671,13
+Keep ambiguous IDs (diagnostic),2935,14,0.0646259169140475,14
