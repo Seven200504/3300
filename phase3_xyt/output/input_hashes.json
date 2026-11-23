@@ -1,0 +1,11 @@
+{
+  "analysis/output/phase2/shared/artist_year.csv.gz": "60fcc5275e5c617dd81d38b064dd5692366b3f6f6035714fbf27ce3f8cc9cd09",
+  "analysis/output/phase2/shared/artist_decade.csv.gz": "99ca55b8eacfaa73523b252dfe7ca10089a1f29ff6226ba7c41660d252dbaa59",
+  "analysis/output/phase2/shared/feature_scaler.csv": "5b10caccfc971d0ea0b3a34e4fb2323d9fefca400f347ad62563eaf0bd9dbda6",
+  "analysis/output/phase2/shared/nodes.csv": "cd3f011da1a3e43b98bfed8b0944a380aa166f5707c961a0641320bacfe8882a",
+  "analysis/output/phase2/shared/edges.csv": "12c7ab580827a4d326989db7db8025201534ebfd3b98a78335177fe15524bb43",
+  "analysis/output/phase2/r1/metrics.csv": "ed397423ad681532a5eabde775a781f6ed47ed5ed15df88a5d80fcc3643bd06d",
+  "analysis/output/phase2/r3/genre_pairs.csv": "26c98ab850449764f229f4092331524a8b6b0cf7a6c30454348193a4d2e5ee7b",
+  "analysis/output/phase2/r4/followers.csv": "14f6ff099592a2fbd960101814ed35a4a01b120e03f48bb785a7022c18dd0ba2",
+  "code/output/full_music_data_clean.csv": "05c1609c2281e33c0ce232b94c42101b294bbb46238b4c553da5e357a76f1430"
+}

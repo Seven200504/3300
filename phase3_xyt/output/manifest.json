@@ -1,0 +1,220 @@
+{
+  "version": "2026-11-23",
+  "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:30:20) [Clang 20.1.8 ]",
+  "analysis_packages": {
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "matplotlib": "3.11.0"
+  },
+  "files": {
+    "code/.DS_Store": {
+      "bytes": 8196,
+      "sha256": "d30c0ed75af682ba4c46d4cf0f6c50caad5ab621050581dacf519552f508c966"
+    },
+    "code/build_report.py": {
+      "bytes": 42707,
+      "sha256": "1304afaeedda5251b2ae98da3fa98a1bc8774211bcd6797eb6e5b0216d63e241"
+    },
+    "code/common.py": {
+      "bytes": 6778,
+      "sha256": "f23185f9217e2898b5857b7eeebc66464727c7b941ba9e4f86f30ca0d547b957"
+    },
+    "code/csv_store.py": {
+      "bytes": 1586,
+      "sha256": "8ddbc0f08f2e2185ab9ce0bfceb9b058101ba622100a6d21bc197756ee6ca660"
+    },
+    "code/r5.py": {
+      "bytes": 42575,
+      "sha256": "d01454b6117dcdab1a8ba1807e0ec0f26150f67faa62c292133fabd0ca99f5dd"
+    },
+    "code/r6.py": {
+      "bytes": 19239,
+      "sha256": "ec0ba729689ef89bd62b3085a000b8077fe172d5e9805e4e0f409f4c0a64962b"
+    },
+    "code/r6_predict.py": {
+      "bytes": 15106,
+      "sha256": "2348f5f04ca857a1cc075bcb313f77ba146c18d9c353fa7b7b8e4d2f6f743323"
+    },
+    "code/r7.py": {
+      "bytes": 16136,
+      "sha256": "044084b21437bcf60893d300c2e25389f6085e154d71f758eb5b99c76a89ebb1"
+    },
+    "code/render_report.py": {
+      "bytes": 4427,
+      "sha256": "342a464a88afafb2ee9a197edbe40eaa4ecfbfee8a05bfd5b7f534dbb79cc1ae"
+    },
+    "code/run_all.py": {
+      "bytes": 2096,
+      "sha256": "860551a0d0ef811a88e0b1cac2bb57159620831dfd5c350d1bd14e2a53c70c4a"
+    },
+    "code/validate.py": {
+      "bytes": 17325,
+      "sha256": "bcd2dd98b2291ea405c64f445551e4fc2a912c18a83d076fe0ee54ac9ce3adde"
+    },
+    "output/.DS_Store": {
+      "bytes": 10244,
+      "sha256": "82ea3d1dec61dbf28a9dc3d515d864114d67c487e335c38f455e48d9af2edc4d"
+    },
+    "output/input_hashes.json": {
+      "bytes": 1046,
+      "sha256": "6847d9bbec6524c431321e2ff6a5a15dc9001a25062380e560114567b9243881"
+    },
+    "output/r5/01_time_trends.png": {
+      "bytes": 482903,
+      "sha256": "7abf2fe499beca73bb1ce2206eb154b08c84829c333936070f8e4e6d24ff0d39"
+    },
+    "output/r5/02_all_features.png": {
+      "bytes": 920513,
+      "sha256": "6b4bb8c5c7bd28d7d665e1bd7ce658171f84731c7360506a5169f17ef10b77c7"
+    },
+    "output/r5/03_artist_profiles.png": {
+      "bytes": 406586,
+      "sha256": "73dc3429e792f7f5efc076e707e6b0f976fb3892615b4cfc2002a3ef32cede1f"
+    },
+    "output/r5/04_follower_comparison.png": {
+      "bytes": 222822,
+      "sha256": "7df17fae3a126aea56979e2550ed4de855b63354b526b70e33bd9d64819434f4"
+    },
+    "output/r5/05_bin_origin_stability.png": {
+      "bytes": 208346,
+      "sha256": "1b0f9c250bb416e5915de64c0c23082791e04dfa69847b15b804ffc53c7d0516"
+    },
+    "output/r5/06_transition_candidates.png": {
+      "bytes": 233452,
+      "sha256": "6e30b2ce07cb1d45b0ffe0c2446b1adbdfdbb23a0e888b19247054bdcb63f021"
+    },
+    "output/r5/07_follower_side_comparison.png": {
+      "bytes": 202278,
+      "sha256": "7bf05ffebb66959abec37e5091231b374178674163bfe04f8bbb7b16cbcec588"
+    },
+    "output/r5/08_transition_feature_links.png": {
+      "bytes": 292658,
+      "sha256": "a3fb0343c4cbff93d83d68faad22f82a72b73f970642315102a4e47d3ff4e58c"
+    },
+    "output/r5/09_transition_timing.png": {
+      "bytes": 299641,
+      "sha256": "a680ccd362a805e7ad0347ecbc68124753fc1998b6dd696968c03dad83f828fc"
+    },
+    "output/r5/tables.zip": {
+      "bytes": 1405369,
+      "sha256": "53332d35f97a78c59ec2301579766dc0b60ca9cc6e5d7109b5b78059a1ac3083"
+    },
+    "output/r6/01_genre_trends.png": {
+      "bytes": 333607,
+      "sha256": "33e9b89eacf5b390bdae20c83df44c7039d2d95bf5dd3cb120d45ef07bf4fb87"
+    },
+    "output/r6/02_dynamic_influencers.png": {
+      "bytes": 317991,
+      "sha256": "6ebc11467c5bd70b265a02fe4c56ed0603831a2b378df8a7054b9050eef175a7"
+    },
+    "output/r6/03_leader_214162.png": {
+      "bytes": 345481,
+      "sha256": "177d81badade90c796bf11f349920fa6009e342fd43f40369e46f4d6bb779086"
+    },
+    "output/r6/03_leader_410219.png": {
+      "bytes": 481071,
+      "sha256": "f6e68017b43b3572d3fcb867c344dde03a32d239503ec02a53efecb8c3103c2c"
+    },
+    "output/r6/03_leader_549797.png": {
+      "bytes": 442701,
+      "sha256": "41a7c4d5143de381fd1f30615b0ebdb1f24dcbbd4e7bef4d69255e68ca90f5cb"
+    },
+    "output/r6/03_leader_68551.png": {
+      "bytes": 395592,
+      "sha256": "4df3449b0fe160a94c4cf9b5e361f544773d43bc9a33b8530ef41aa39db93f36"
+    },
+    "output/r6/03_leader_944084.png": {
+      "bytes": 432971,
+      "sha256": "7b8f71fea5fbc5d3c991b2833eab08bb460fc64433efb9237bd11cc01d0fcfea"
+    },
+    "output/r6/04_change_decomposition.png": {
+      "bytes": 405236,
+      "sha256": "08ef3a0d4b33c0700bb04cd685c666391f81391b8e41dc1ae3dda7e9aae8af2a"
+    },
+    "output/r6/05_all_decade_decomposition.png": {
+      "bytes": 368264,
+      "sha256": "ae6e1f781f065009a2fad2d884bd812d8bb92b33f38100455df909120e990216"
+    },
+    "output/r6/06_leader_follower_bridge.png": {
+      "bytes": 130314,
+      "sha256": "c744ef70d0be1337d8f707a780dc7c374e595002049fc8e88d9e18cc3e524f5e"
+    },
+    "output/r6/07_feature_selection.png": {
+      "bytes": 159341,
+      "sha256": "c82c12e6133e70377a068699fe0a8ed934e25ca87fddbdc62e0251c10b5632a0"
+    },
+    "output/r6/08_predictive_importance.png": {
+      "bytes": 185943,
+      "sha256": "bf513b982a8b13ed29708e7863ad6b98c7b1ce4c3f8422b887f5ccd2b688756c"
+    },
+    "output/r6/09_prediction_examples.png": {
+      "bytes": 157449,
+      "sha256": "b2b574d099cd4f1b6d9c4a5c2dd6d212cd7c379ba7e4fb9dce09fd16be02e143"
+    },
+    "output/r6/prediction_summary.json": {
+      "bytes": 1000,
+      "sha256": "0d1c7a506e1a324bde46944b4de158319d4a2461b97e17649383c92a8944c756"
+    },
+    "output/r6/tables.zip": {
+      "bytes": 276053,
+      "sha256": "d0b8e033857bfc0fe03b2f7be8c3e3cf05d760e8294c629932c05a6c573caa64"
+    },
+    "output/r7/country_cultural_structure.png": {
+      "bytes": 277465,
+      "sha256": "6b6235b5fb043d1b3f5640976fe51151b0e3ec66c0a049335000bf0f39ce44b4"
+    },
+    "output/r7/genre_lineage_vs_sound.png": {
+      "bytes": 111186,
+      "sha256": "5d89058ae3652ecf55fb8be866ccb813fed22a608745203aad2d59017b7da8d6"
+    },
+    "output/r7/network_signatures.png": {
+      "bytes": 407132,
+      "sha256": "3b2f59469c24d8052994f61f8cd165cbe9e6e6d84093b679fa3ec3e3bab0d0bc"
+    },
+    "output/r7/sonic_variance_decomposition.png": {
+      "bytes": 304936,
+      "sha256": "a925ea631fd9cca387bbc47d9293b0acd17323380de229e645a2f10d1b1e7405"
+    },
+    "output/r7/summary.json": {
+      "bytes": 195,
+      "sha256": "6e652bd234cb4390910433254fbce1a591cb575a72339beb0e9a01aa32029c6e"
+    },
+    "output/r7/tables.zip": {
+      "bytes": 79114,
+      "sha256": "25436a6ebe9b2bcdf1b878a76ce1f006387c1ab9519a152eedbe298d17b3d1a4"
+    },
+    "output/report_layout.json": {
+      "bytes": 3217,
+      "sha256": "3ef66c6f044bbf19f8d053a7dac3fbdf88442689202b8d21b41f3d5a38c100ef"
+    },
+    "output/run.log": {
+      "bytes": 21751,
+      "sha256": "e5c8dca9706b54bbf8bde535fe9f28a449198295b0d4a4f1ac645e045759338e"
+    },
+    "output/validation.json": {
+      "bytes": 2533,
+      "sha256": "6fb6bef5776f33bc9ccb2fd0c3b216747cb0589a6d5af3fd5a905146da333d86"
+    },
+    "report/Phase3_Report.html": {
+      "bytes": 10097394,
+      "sha256": "e7322a7c92228b1ca3800b8a932c21571093f7e60548b30991016b3af336f953"
+    },
+    "report/Phase3_Report.pdf": {
+      "bytes": 8600497,
+      "sha256": "8edbfa2d78f035a390e483f660720ef41424dfb6c9f70260fcbcc035b56d829a"
+    },
+    "report/report_content.json": {
+      "bytes": 55213,
+      "sha256": "6983c62814fd1dcd42ddab21bd58500ad8bebbdf1c8f1cdb6b93bd3340766265"
+    },
+    "README.md": {
+      "bytes": 15824,
+      "sha256": "117ee42e8f7feb381839569e230f40c286ec9334bd61a2224e83ad221a1ec4f6"
+    },
+    "requirements.txt": {
+      "bytes": 40,
+      "sha256": "88b610208eb50e9c5be29ce042304fdaba7dba1c9d3f7abbfc3e9bd353a30bf6"
+    }
+  }
+}

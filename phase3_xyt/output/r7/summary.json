@@ -1,0 +1,10 @@
+{
+  "common_audio_genres": [
+    "Country",
+    "Latin",
+    "Pop/Rock",
+    "R&B"
+  ],
+  "reliable_directed_genre_pairs": 73,
+  "spearman_audio_vs_stratified_enrichment": -0.056162440017144315
+}

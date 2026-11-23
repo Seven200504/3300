@@ -1,0 +1,221 @@
+
+### r5.py
+      artists  credits
+year                  
+1930      8.0     52.0
+1931      NaN      NaN
+2019    185.0    552.0
+2020    158.0    491.0
+repeat-year artists 3838 of 5486
+Years with >=20: [1945, 1947, 1949, 1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+Fixed weights: genre
+Country     0.123477
+Latin       0.079233
+Pop/Rock    0.617029
+R&B         0.180260
+dtype: float64 Annual largest movements: year
+1953    0.400433
+1950    0.324267
+1954    0.291846
+1955    0.249818
+2015    0.242204
+Name: J, dtype: float64
+    K        SSE  working_BIC          breaks           spec  min_periods
+15  3   4.758547 -2364.850272  1969/1986/2013  all_on_common            5
+3   3  10.258518 -2456.898935  1962/1983/2013       annual20            5
+6   2  12.583024 -2449.758935       1962/1981   annual20_L10           10
+11  3   7.023635 -2507.246562  1968/1986/2013       annual50            5
+25  1   1.168453  -462.485668            1970      five_year            3
+23  3   5.018147 -2332.979240  1969/1983/2013     fixed_four            5
+19  3   5.070464 -2326.756307  1969/1984/2013  observed_four            5
+Descriptive high/high threshold 0.75 70
+Descriptive high/high threshold 0.85 26
+artists: 2028 complete: 1469 positive reach: 1052
+                     name     genre  start  ...  past_percentile  reach  reach_pct
+artist_id                                   ...                                   
+66915           Bob Dylan  Pop/Rock   1962  ...         0.866667   72.0   0.988506
+84209                Kiss  Pop/Rock   1974  ...         0.920833   50.0   0.989717
+446509          Metallica  Pop/Rock   1983  ...         0.874251   52.0   1.000000
+16925      Paul Gonsalves      Jazz   1954  ...         1.000000    0.0   0.214286
+754032        The Beatles  Pop/Rock   1963  ...         0.068182  145.0   1.000000
+
+[5 rows x 9 columns]
+Rank associations: -0.05413367195573609 -0.04473927245222975 0.9862411728520664 0.8624903066304239
+[[66915, 72, np.int64(245), 3, 0], [84209, 50, np.int64(116), 2, 0], [446509, 52, np.int64(65), 10, 34]]            count      mean
+artist_id                 
+446509        34 -0.004243
+R5: bin-origin stability, period candidates, historical neighbors and both matching designs verified.
+           name  start  novelty_pct  nearest3_pct  pct_no_liveness  later_followers  macro_direction_cosine
+      The Kinks   1960     0.681818      0.727273         0.681818               56                0.683093
+ Herbie Hancock   1960     0.607843      0.049020         0.617647               12                0.743555
+    The Beatles   1960     0.136364      0.227273         0.090909              145                0.491640
+    Deep Purple   1965     0.967213      0.967213         0.983607               75                0.595907
+     Bo Diddley   1965     0.916667      0.966667         0.900000               19                0.646992
+    The Beatles   1965     0.083333      0.650000         0.166667              257                0.301835
+    Miles Davis   1970     0.952381      0.809524         0.976190               17                0.769694
+Charlie Daniels   1970     0.871795      0.948718         0.948718               10                0.869356
+    The Beatles   1970     0.089005      0.005236         0.125654              112                0.152854
+Revolution-linked selection:            name  start  transition_projection  novelty_pct  later_followers  matched  reported_transition_advantage
+ Herbie Hancock   1960               0.617662     0.607843               12        1                            NaN
+      The Kinks   1960               0.539568     0.681818               56       24                       0.006615
+    Deep Purple   1965               0.860063     0.967213               75       36                       0.143373
+     Bo Diddley   1965               0.780972     0.916667               19        0                            NaN
+    Miles Davis   1970               1.103564     0.952381               17        4                            NaN
+Charlie Daniels   1970               0.904721     0.871795               10        1                            NaN
+
+### r6.py
+LEADERS
+  artist_id          name  source_cohort  target_cohort  followers  all_incoming_edges  all_country_nodes  targets_with_incoming  incoming_share  cohort_coverage  rank  share_change_pp  coverage_change_pp
+    549797 Hank Williams           1930           1950         30                 382                 60                     56        0.078534         0.500000   1.0              NaN                 NaN
+    549797 Hank Williams           1930           1960         22                 392                 51                     48        0.056122         0.431373   1.0        -2.241158           -6.862745
+    410219 Merle Haggard           1960           1970         18                 554                 60                     57        0.032491         0.300000   1.0              NaN                 NaN
+    410219 Merle Haggard           1960           1980         11                 420                 42                     38        0.026190         0.261905   1.0        -0.630050           -3.809524
+    214162    Vince Gill           1970           1990         21                 868                 74                     72        0.024194         0.283784   1.0         1.705069           21.235521
+    944084 George Strait           1970           2000         14                 392                 45                     45        0.035714         0.311111   1.0         1.267281            4.084084
+     68551 Kenny Chesney           1990           2010          6                 102                 25                     25        0.058824         0.240000   1.0         5.117047           17.333333
+DECOMPOSITION
+      feature  before_n  after_n  continuing_n  left_n  entered_n  before_mean  after_mean  within_change  exit_composition  entry_composition  total_change
+      energy        89       70            34      55         36    -0.292049    0.296327       0.258471          0.117189           0.212717      0.588376
+acousticness        89       70            34      55         36     0.111229   -0.196854       0.052668         -0.200273          -0.160478     -0.308083
+PERSISTENCE
+                          eligible_cohorts  cohorts_with_followers  top3_cohorts
+artist_id name                                                                 
+68551     Kenny Chesney                 2                       2             1
+214162    Vince Gill                    4                       4             1
+410219    Merle Haggard                 5                       5             3
+549797    Hank Williams                 7                       7             3
+944084    George Strait                 4                       4             3
+All assertions passed.
+R6: all supported decade decompositions and time-ordered follower comparisons verified.
+ before  after  minimum_credits      feature  before_n  after_n  continuing_n  left_n  entered_n     total    within  exit_composition  entry_composition  within_boot_low  within_boot_high
+   1950   1960                5       energy        21       55            16       5         39 -0.032990 -0.003832         -0.090356           0.061198        -0.265109          0.275773
+   1950   1960                5 acousticness        21       55            16       5         39 -0.158022 -0.182006          0.027087          -0.003104        -0.394807          0.034184
+   1960   1970                5       energy        55       51            20      35         31  0.157860 -0.022239          0.051022           0.129076        -0.277910          0.252421
+   1960   1970                5 acousticness        55       51            20      35         31 -0.475324 -0.113140         -0.009512          -0.352671        -0.359962          0.127711
+   1970   1980                5       energy        51       54            22      29         32 -0.072976 -0.088575         -0.069589           0.085187        -0.218787          0.045955
+   1970   1980                5 acousticness        51       54            22      29         32 -0.388076 -0.157348         -0.164064          -0.066664        -0.281214         -0.039563
+   1980   1990                5       energy        54       89            30      24         59  0.486435  0.305227         -0.072337           0.253545         0.135949          0.470165
+   1980   1990                5 acousticness        54       89            30      24         59 -0.136913 -0.020754          0.049573          -0.165731        -0.228908          0.208599
+   1990   2000                5       energy        89       70            34      55         36  0.588376  0.258471          0.117189           0.212717         0.115895          0.408033
+   1990   2000                5 acousticness        89       70            34      55         36 -0.308083  0.052668         -0.200273          -0.160478        -0.085067          0.195350
+   2000   2010                5       energy        70       50            29      41         21  0.301047  0.243204          0.081498          -0.023655         0.102762          0.389210
+   2000   2010                5 acousticness        70       50            29      41         21 -0.234158 -0.170475         -0.044767          -0.018915        -0.287148         -0.063882
+ artist_id   source_name  source_start  source_stop  source_solo_credits  network_targets  audio_targets  matched_targets
+    549797 Hank Williams          1956         1960                   16               95             41                5
+    410219 Merle Haggard          1965         1969                   21               57             39                4
+    214162    Vince Gill          1989         1993                    9               28             17                0
+    944084 George Strait          1981         1985                   53               46             31                4
+     68551 Kenny Chesney          1994         1998                    8                9              6                1
+                         matched_followers  mean_excess  median_excess  minimum_controls  reported_mean
+artist_id target_cohort                                                                                
+68551     2000                           1    -0.084632      -0.084632                 5            NaN
+410219    1990                           4    -0.012369      -0.014984                10            NaN
+549797    1990                           5    -0.005698       0.007248                 7      -0.005698
+944084    1990                           4    -0.006980      -0.000216                10            NaN
+
+### r6_predict.py
+{
+  "primary_penalty": 10.0,
+  "test_cohorts": [
+    1980,
+    1990,
+    2000,
+    2010
+  ],
+  "eligible_panel_rows": 340,
+  "unique_sources": 206,
+  "panel_support": {
+    "1960": 21,
+    "1970": 55,
+    "1980": 51,
+    "1990": 54,
+    "2000": 89,
+    "2010": 70
+  },
+  "stable_candidates": [
+    "danceability",
+    "acousticness",
+    "speechiness",
+    "liveness"
+  ],
+  "full_model_relative_gain": -0.08118455924931123,
+  "baseline_cohort_equal_rmse": 0.05786574445560839,
+  "full_cohort_equal_rmse": 0.06016881553327029,
+  "criterion": "positive addition gain, >=3/4 positive held-out cohorts, positive aggregate gain in all five penalty/credit settings",
+  "baseline_columns": [
+    "log_prior_followers",
+    "cohort_gap",
+    "log_credits",
+    "cohort_time"
+  ]
+}
+                  minimum_credits  penalty  addition_gain  conditional_drop_gain  addition_positive_folds  drop_positive_folds  full_model_gain  positive_settings  positive_coefficients  negative_coefficients  stable_candidate  importance_rank
+feature                                                                                                                                                                                                                                            
+danceability                    5     10.0       0.040585               0.053610                        4                    4        -0.081185                5.0                    4.0                    0.0              True                1
+acousticness                    5     10.0       0.024108               0.073117                        4                    4        -0.081185                5.0                    0.0                    4.0              True                2
+speechiness                     5     10.0       0.018596               0.024306                        4                    4        -0.081185                5.0                    0.0                    4.0              True                3
+liveness                        5     10.0       0.011278              -0.007904                        3                    1        -0.081185                5.0                    1.0                    3.0              True                4
+tempo                           5     10.0       0.007712               0.015998                        1                    3        -0.081185                4.0                    3.0                    1.0             False                5
+instrumentalness                5     10.0       0.006978               0.017465                        2                    2        -0.081185                5.0                    0.0                    4.0             False                6
+energy                          5     10.0      -0.002274              -0.007728                        2                    1        -0.081185                2.0                    1.0                    3.0             False                7
+valence                         5     10.0      -0.005500              -0.034002                        0                    1        -0.081185                0.0                    1.0                    3.0             False                8
+log_duration                    5     10.0      -0.047320              -0.067873                        0                    1        -0.081185                0.0                    0.0                    4.0             False                9
+loudness                        5     10.0      -0.153668              -0.070473                        0                    0        -0.081185                0.0                    4.0                    0.0             False               10
+ target_cohort    model  test_sources  coverage_rmse  rank_spearman  top3_overlap
+          1980 baseline            51       0.057236       0.410339             1
+          1980     full            51       0.063925       0.421756             1
+          1990 baseline            54       0.064439       0.673629             1
+          1990     full            54       0.059079       0.721387             1
+          2000 baseline            89       0.059992       0.357395             1
+          2000     full            89       0.068807       0.358432             1
+          2010 baseline            70       0.048646       0.191382             2
+          2010     full            70       0.046584       0.191146             1
+ target_cohort  artist_id          name model  source_window_start  source_window_stop  credits  prior_followers  followers  target_nodes  actual_coverage  predicted_coverage  actual_rank  predicted_rank
+          1980     410219 Merle Haggard  full                 1970                1979       19               18         11            42         0.261905            0.118826          1.0             2.0
+          2000     944084 George Strait  full                 1990                1999       43               27         14            45         0.311111            0.298476          1.0             1.0
+          2010      68551 Kenny Chesney  full                 2000                2009       75                3          6            25         0.240000            0.124375          1.0             4.0
+
+### r7.py
+Common genres: ['Country', 'Pop/Rock', 'R&B']
+        edges  followers  sources  cross_edge_share  degree_expected_cross_share  cross_observed_expected  top10_share  source_pair_concentration  median_nonnegative_gap_decades  negative_gap_share  follower_equal_cross_share  common_genres_observed  common_genres_fixed  source_diversity_3to5  source_diversity_n
+cohort                                                                                                                                                                                                                                                                                                                   
+1950     2860        441      702            0.3598                       0.8558                   0.4204       0.1206                     0.0037                             1.0              0.0976                      0.3379                  0.4331               0.5348                 1.5416                 106
+1960     6478        753     1134            0.3743                       0.7277                   0.5144       0.1467                     0.0047                             1.0              0.0153                      0.3553                  0.3399               0.3438                 1.7629                 114
+1970     6778        717     1474            0.2414                       0.6149                   0.3925       0.1098                     0.0027                             1.0              0.0109                      0.2313                  0.1905               0.1903                 1.3869                 107
+1980     8516        893     1811            0.1812                       0.4553                   0.3979       0.0820                     0.0020                             1.0              0.0119                      0.1993                  0.1318               0.1362                 1.3670                 156
+1990    10911       1082     2275            0.1801                       0.5306                   0.3394       0.0477                     0.0011                             2.0              0.0025                      0.1954                  0.1176               0.1182                 1.3238                 187
+2000     5471        702     1775            0.1806                       0.4879                   0.3701       0.0512                     0.0012                             2.0              0.0002                      0.1850                  0.1541               0.1552                 1.4009                 129
+2010      811        200      500            0.2343                       0.6087                   0.3849       0.0912                     0.0021                             2.0              0.0000                      0.2624                  0.2338               0.2375                 1.5534                  77
+All assertions passed.
+R7: source shares, cohort gaps, exact variance decomposition and cohort-stratified reference verified.
+      network_nodes  linked_targets  edges  edge_external  follower_equal_external  two_or_more_cohorts_earlier
+1950             60              56    382         0.2461                   0.1648                       0.3246
+1960             51              48    392         0.2934                   0.2565                       0.4133
+1970             60              57    554         0.2419                   0.2092                       0.5253
+1980             42              38    420         0.2762                   0.2455                       0.6071
+1990             74              72    868         0.1912                   0.2101                       0.6866
+2000             45              45    392         0.1837                   0.1792                       0.7398
+2010             25              25    102         0.3235                   0.3933                       0.9216
+ period_start   population  artists  genres  within  between  total  between_fraction
+         1960 common_fixed      136       4  0.4756   0.0354 0.5110            0.0693
+         1965 common_fixed      250       4  0.5481   0.0525 0.6006            0.0874
+         1970 common_fixed      317       4  0.5091   0.0585 0.5676            0.1030
+         1975 common_fixed      322       4  0.6535   0.0764 0.7299            0.1046
+         1980 common_fixed      388       4  0.6994   0.1286 0.8280            0.1554
+         1985 common_fixed      407       4  0.6578   0.1082 0.7660            0.1412
+         1990 common_fixed      367       4  0.7154   0.0857 0.8011            0.1070
+         1995 common_fixed      338       4  0.6534   0.1048 0.7582            0.1382
+         2000 common_fixed      348       4  0.6058   0.1020 0.7078            0.1441
+         2005 common_fixed      329       4  0.5352   0.0710 0.6062            0.1171
+         2010 common_fixed      247       4  0.5048   0.0534 0.5582            0.0957
+         2015 common_fixed      159       4  0.4007   0.0583 0.4591            0.1271
+Supported pair correlation: -0.056162440017144315
+
+### validate.py
+PASS: 48 named checks, including all stored matched contrasts.
+
+### build_report.py
+Built 28 report sections from final CSV outputs.
+
+### render_report.py
+Rendered PDF from 28 shared sections using Arial Unicode.ttf.
